@@ -1,5 +1,6 @@
 // Catching Car Mileage Numbers --- http://www.codewars.com/kata/52c4dd683bfd3b434c000292/train/javascript
 // Catching Car Mileage Numbers --- http://www.codewars.com/kata/52c4dd683bfd3b434c000292/train/javascript
+/*
 function isInteresting(number, awesomePhrases) {
 	// Go to town!
 	var re = /\d+\.\d+/
@@ -27,39 +28,45 @@ function isInteresting(number, awesomePhrases) {
 	}
 	
 	function sameDigit(num) {
-		var cur = num % 10
-		num = parseInt( num / 10 )
-		
-		while (num !== 0) {
-			if (cur !== num % 10)
-				return false
-			num = parseInt( num / 10 )
-		}
-		return true
+		return /^(\d)\1+$/.test(num)
 	}
 	
 	
 	function seq(num) {
-		var inc_seq = '1234567890'
-		var deinc_seq = '9876543210'
-		var num_str = num.toString()
-		
-		for (var i = 0 ; i + num_str.length <= 10  ; i ++){
-			if (inc_seq.substring(i , i + num_str.length) === num_str ||  deinc_seq.substring(i , i + num_str.length) == num_str)
-				return true
-		}
-    return false
+		return RegExp(num).test(1234567890) || RegExp(num).test(9876543210)
 	}
 }
+*/
 
-
+function isInteresting(number, awesomePhrases){
+	tests = [
+				function(n) { return /^\d00+$/.test(n) ;} ,  //check if followd by zeros
+				function(n) { return /^(\d)\1+$/.test(n) ;} , //check if input is all digits are same
+				function(n) { return RegExp(n).test(1234567890) || RegExp(n).test(9876543210) ; },
+				function(n) { return n.toString() == n.toString().split('').reverse().join('') ; },
+				function(n) { return awesomePhrases.indexOf(n) !== -1 ; }
+				];
+				
+				
+	var result = 0;
+	tests.some(function (test) {
+		if (number > 99 && test(number))
+			return result = 2;
+		else if (number > 98 && test(number + 1) || number > 97 && test(number + 2))
+			result = 1;
+	});
+	return result
+}
 
 
 //console.log(isInteresting(2.3, []));
 console.log(isInteresting(100.1, []));
 console.log(isInteresting(100, []));
+console.log(isInteresting(101, []))
+console.log(isInteresting(102, []));
 console.log(isInteresting(111, []));
 console.log(isInteresting(1221, []));
 console.log(isInteresting(1231, [1231]));
 console.log(isInteresting(10000, []));
 console.log(isInteresting(1111111, []));
+console.log(isInteresting(1234,[] ));
