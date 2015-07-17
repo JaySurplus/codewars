@@ -24,3 +24,18 @@ solve(map, {'x':0,'y':0}, {'x':1,'y':1})
 http://www.codewars.com/kata/5326ef17b7320ee2e00001df/train/python
 
 '''
+
+def solve(map, miner, exit):
+	#your code here
+	dirc = { 'right': [1,0],
+			'left': [-1,0],
+			'down':  [0,1],
+			'up': [0,-1] }
+
+
+	matrix = [[ int(map[i][j])   for i in range(len(map)) ] for j in range(len(map[0]))]
+
+	start = [ value for key , value in miner.itemiters() ]
+	end = [ value for key , value in exit.itemiters() ]
+
+	print start
