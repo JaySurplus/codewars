@@ -31,9 +31,11 @@ def powersetlist(s):
         r += [x+[e] for x in r]
     return r
  
-s= [0,1,2,3]    
+   
 #print "\npowersetlist(%r) =\n  %r" % (s, powersetlist(s))
 
 
 #print power([0,1,2,3])
+if __name__ == '__main__':
+  print power([0,1,2,3])
    
