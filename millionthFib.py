@@ -3,6 +3,7 @@
 	http://www.codewars.com/kata/53d40c1e2f13e331fc000c26/train/python
 """
 import math
+import sys
 from collections import defaultdict
 
 def fib(n):
@@ -57,8 +58,16 @@ def fib(n):
 	return get_fib(n) if n >= 0 else (-1)**(n%2+1) *get_fib(-n)
 
 def main():
-	print fib(10000)
+	try:
+		var = int(raw_input("Please enater a number:"))
+
+		result = fib(var)
+		print "The %dth fib number is %d"%(var , result)
+	except:
+		pass
+	
 
 if __name__ == '__main__':
 	main()
+
 
