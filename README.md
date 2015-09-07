@@ -1,7 +1,7 @@
 # codewars
 ![JaySurplus](https://avatars0.githubusercontent.com/u/1681910?v=3&s=460)
 
-Hello, I am JaySurplus.
+Hello, This is JaySurplus.
 ---
 
 This repo stores all my [codewars](http://www.codewars.com) practices.
