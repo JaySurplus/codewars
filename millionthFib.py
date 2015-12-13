@@ -62,9 +62,10 @@ def fib(n):
 
 def main():
 	try:
-		var = int(raw_input("Please enater a number:"))
-
+		#var = int(raw_input("Please enter the n-th Fib number you want:"))
+		var = 50
 		result = fib(var)
+		print len(str(result)) 
 		print "The %dth fib number is %d"%(var , result)
 	except:
 		pass
