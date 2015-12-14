@@ -4,11 +4,12 @@
 """
 import math
 import sys
+import time
 from collections import defaultdict
 
 # following not working , took too much time to compute.
 
-def fib(n):
+def fib(n , i):
 
 
 	dic = defaultdict(list)
@@ -46,7 +47,7 @@ def fib(n):
  				return a
 	#print matrix_power([1,1,1,0])
 
-	def get_fib(t):
+	def matrix_fib(t):
 		if t == 0 or t == 1:
 			return t
 		else:
@@ -54,18 +55,75 @@ def fib(n):
 			alist = find_dim(t-1)
 			for i in alist:
 				result = matrix_multi(result,matrix_power(i))
-			return result[0]
+			return result
 	
+	def dynamic_fib(n):
+		a = 0
+		b = 1
+		if n == 0:
+			return (a , b)
+	
+		for i in range(n):
+			temp = a + b
+			a = b
+			b = temp
+		return (a , b )
 
 
-	return get_fib(n) if n >= 0 else (-1)**(n%2+1) *get_fib(-n)
+
+	def double_fast(n):
+		#really fast
+		if n == 0:
+			return (0 , 1)
+		else:
+			a, b = double_fast(n/2)
+			c = a * (2* b -a )
+			d = b **2 + a**2
+			if n%2 == 0:
+				return (c , d)
+			else:
+				return (d , d+c)
+
+	def compute_fib(n ,i ):
+		func = {0: matrix_fib,
+		        1: double_fast,
+		        2: dynamic_fib }
+
+
+		return func[i](n)[0] if n >= 0 else (-1)**(n%2+1) * func[i](-n)[0]
+
+
+
+
+	
+	return compute_fib(n , i)
+
+def size_base10(n):
+		size = 0
+		while n /10 != 0:
+			size += 1
+			n = n/10
+		
+		return size
+
 
 def main():
+	'''
+		func = {0: matrix_fib,
+		        1: double_fast,
+		        2: dynamic_fib }
+	'''
 	try:
 		#var = int(raw_input("Please enter the n-th Fib number you want:"))
-		var = 50
-		result = fib(var)
-		print len(str(result)) 
+		var = 100
+		start = time.time()
+		i = 1
+		result = fib(var , i)
+
+		end = time.time()
+		
+		print "Lenght of %dth fib number is %d" %(var , size_base10(result))
+		print "Time is %s seconds." % (end - start)
 		print "The %dth fib number is %d"%(var , result)
 	except:
 		pass
