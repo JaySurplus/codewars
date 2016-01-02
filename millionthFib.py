@@ -115,16 +115,16 @@ def main():
 	'''
 	try:
 		#var = int(raw_input("Please enter the n-th Fib number you want:"))
-		var = 100
+		var = 200000
 		start = time.time()
 		i = 1
 		result = fib(var , i)
 
 		end = time.time()
 		
-		print "Lenght of %dth fib number is %d" %(var , size_base10(result))
+		#print "Lenght of %dth fib number is %d" %(var , size_base10(result))
 		print "Time is %s seconds." % (end - start)
-		print "The %dth fib number is %d"%(var , result)
+		#print "The %dth fib number is %d"%(var , result)
 	except:
 		pass
 	
