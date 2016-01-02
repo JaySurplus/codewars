@@ -24,4 +24,4 @@ def solution(n):
 #			print key , n,roman_numerals[key]
 	return result
 
-print solution(999)
+print solution(800)

@@ -124,6 +124,7 @@ def main():
 		
 		#print "Lenght of %dth fib number is %d" %(var , size_base10(result))
 		print "Time is %s seconds." % (end - start)
+		#print result
 		#print "The %dth fib number is %d"%(var , result)
 	except:
 		pass
